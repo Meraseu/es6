@@ -313,6 +313,35 @@ console.log(team.teamSummary());
 
 ## Classes
 
+```
+class Car {
+   constructor({title,name}) {
+    	 this.title = title;
+     	 this.name = name;
+   }
+ 	 drive() {
+    	return 'vroom'; 
+   }
+}
+
+const car = new Car({ title: 'Toyata',name:'name'});
+car;
+car.drive();
+
+class Toyota extends Car {
+  constructor(options) {
+     super(options); // Car.constructor()
+   	 this.color = options.color;
+  }
+ 	honk() {
+   	 return 'beep';
+  }
+}
+const toyota = new Toyota({color:'red'});
+toyota.honk();
+toyota
+```
+
 ## Generators
 
 ## Promises and Fetch
