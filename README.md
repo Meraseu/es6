@@ -2,15 +2,190 @@
 
 ## The 'forEach' Helper
 
+```
+var colors = ['red','blue','green'];
+colors.forEach(function(color) {
+    console.log(color);
+});
+```
+
+```
+// Create an array of numbers
+var numbers = [1,2,3,4,5];
+// Create a variable to hold the sum
+var sum = 0;
+function adder(number) {
+    sum += number;
+}
+// Loop over the array, incrementing the sum variable
+numbers.forEach(adder);
+// print the sum variable
+console.log(sum);
+```
+
 ## The 'map' Helper
+
+```
+var numbers = [1,2,3];
+var doubledNumbers = [];
+
+for(var i=0; i<numbers.length; i++) {   
+    doubledNumbers.push(numbers[i] * 2);
+}
+console.log(doubledNumbers);
+var doubled = numbers.map(function(number) {
+    return number * 2;
+});
+console.log(doubled);
+```
+```
+paints = [ { color: 'red' }, { color: 'blue' }, { color: 'yellow' }, { fake: 'dont_return' } ];
+function pluck(array, property) {
+    filter = [];
+    array.map(function (v) {
+        v.hasOwnProperty(property) ? filter.push(v[property]) : '';
+    })
+    return filter;
+}
+colors = pluck(paints, "color");
+console.log(colors);
+```
 
 ## The 'filter' Helper
 
+```
+var products = [
+    {name : 'cucumber', type : 'vegetable'},
+    {name : 'banana', type : 'fruit'},
+    {name : 'celery', type : 'vegetable'},
+    {name : 'orange', type : 'fruit'}
+];
+var filteredProducts = [];
+for(var i=0; i<products.length; i++) {
+    if(products[i].type === 'fruit') {
+        filteredProducts.push(products[i]);
+    }
+}
+console.log(filteredProducts);
+
+filteredProducts = products.filter(function(product) {
+    return product.type === 'vegetable';
+});
+console.log(filteredProducts);
+```
+```
+var products = [
+    {name : 'cucumber', type : 'vegetable', quantity : 0, price : 1},
+    {name : 'banana', type : 'fruit', quantity : 10, price : 15},
+    {name : 'celery', type : 'vegetable', quantity : 30, price : 15},
+    {name : 'orange', type : 'fruit', quantity : 3, price : 5}
+];
+var filteredProducts = [];
+filteredProducts = products.filter(function(product) {
+    return product.type === 'vegetable' && product.quantity > 0 && product.price > 10
+});
+console.log(filteredProducts);
+```
+```
+var post = {id : 4, title : 'New Post'};
+var comments = [
+    {postId : 4, content : 'awesome post'},
+    {postId : 3, content : 'it was ok'},
+    {postId : 4, content : 'neat'}
+];
+function commentsForPost(post, comments) {
+    return comments.filter(function(comment) {
+        return comment.postId === post.id
+    });
+}
+console.log(commentsForPost(post, comments));
+```
+
 ## The 'find' Helper
+
+```
+var users = [
+    {name : 'Jill'},
+    {name : 'Alex'},
+    {name : 'Bill'}
+];
+var user;
+for(var i=0; i<users.length; i++) {
+    if(users[i].name === 'Alex') {
+        user = users[i];
+        break;
+    }
+}
+console.log(user);
+
+user = users.find(function(user) {
+    return user.name === 'Alex';
+});
+console.log(user);
+```
 
 ## The 'every' and 'some' Helper
 
+```
+var names = [
+    'Alexandria',
+    'Matthew',
+    'Joe'
+];
+var isEvery = names.every(function(name) {
+    return name.length > 4;
+});
+var isSome = names.some(function(name) {
+    return name.length > 4;
+});
+console.log(isEvery); // And, result false
+console.log(isSome); // Or, result true
+```
+```
+function Field(value) {
+    this.value = value;
+}
+Field.prototype.validate = function() {
+    return this.value.length > 0;   
+}
+var username = new Field('2cool');
+var password = new Field('my_password');
+var birthdate = new Field('10/10/2010');
+
+var formIsValid = [username, password, birthdate];
+
+formIsValid.every(function(field) {
+    return validate;
+});
+console.log(formIsValid);
+```
+
 ## The 'reduce' Helper
+
+```
+var numbers = [10,20,30];
+var sum = 0;
+for(var i=0; i<numbers.length; i++) {
+    sum += numbers[i];
+}
+console.log(sum); // result 60
+numbers.reduce(function(sum, number) {
+    return sum + number;
+}, 0);
+console.log(sum);
+```
+```
+var primaryColors = [
+    {color : 'red'} ,
+    {color : 'yellow'},
+    {color : 'blue'}
+];
+var color = primaryColors.reduce(function(previous, primaryColor) {
+    previous.push(primaryColor.color);
+    return previous
+}, []);
+console.log(color);
+```
 
 ## Const/Let
 
