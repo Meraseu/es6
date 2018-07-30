@@ -246,6 +246,63 @@ console.log(yearMessage);
 
 ## Arrow Functions
 
+> Fat Arrow Functions  
+
+'''
+const add1 = function(a, b) {
+	return a + b;
+}
+console.log(add1(1, 2));
+// es6
+const add2 = (a, b) => {
+	return a + b;
+}
+add2(1, 2)
+```
+
+> Advanced Use of Arrow Functions  
+
+'''
+const double1 = number => 2 * number;
+console.log(double1(8));
+const double2 = (number1,number2) => (2 * number1) + (2 * number2);
+console.log(double2(8,4));
+const numbers = [1,2,3];
+numbers.map(function(number) {
+	return 2 * number;
+});
+numbers.map(number => 2 * number)
+'''
+
+> When to Use Arrow Functions  
+
+'''
+const team = {
+	members : ['Jane', 'Bill'],
+	teamName : ['Super Squad'],
+	teamSummary : function() {
+		const self = this;
+		return this.members.map(function(member) {
+			return `${member} is on team ${self.teamName}`;
+		});
+	}
+};
+console.log(team.teamSummary());
+'''
+
+> When to Use Arrow Functions Continued  
+
+'''
+const team = {
+	members : ['Jane', 'Bill'],
+	teamName : ['Super Squad'],
+	teamSummary : function() {
+		return this.members.map((member) => `${member} is on team ${this.teamName}`);
+	}
+};
+console.log(team.teamSummary());
+'''
+
 ## Enhanced Object Literals
 
 ## Default Function Arguments
