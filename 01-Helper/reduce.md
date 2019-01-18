@@ -39,3 +39,11 @@ function balancedParens(string) {
 }
 console.log(balancedParens(")("));
 ```
+```
+function sumMix(x) {
+  return x.reduce((sum, value) => {
+    return sum + (+value);
+  }, 0);
+}
+sumMix([9, 3, '7', '3']); // 22
+```
